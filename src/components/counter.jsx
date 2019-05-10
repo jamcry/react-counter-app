@@ -11,8 +11,13 @@ class Counter extends Component {
   render() { 
     return ( 
       <div>
-        <span>{this.state.value}</span>
-        <button onClick={this.handleIncrement}>Increment</button>
+        <span className={this.getBadgeClasses()}>{this.state.value}</span>
+        <button
+          className="btn btn-secondary btn-sm"
+          onClick={this.handleIncrement}
+        >
+        Increment
+        </button>
       </div>
     );
   }
@@ -20,6 +25,11 @@ class Counter extends Component {
   handleIncrement() {
     console.log("handle");
     this.setState({value : this.state.value + 1});
+  }
+  
+  getBadgeClasses() {
+    // Return warning(yellow) badge if value is zero, primary(blue) otherwise
+    return "badge m-2 badge-" + (this.state.value === 0 ? "warning" : "primary");
   }
 }
  
