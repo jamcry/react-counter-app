@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/navbar'
 import Counters from './components/counters';
@@ -43,12 +42,14 @@ class App extends Component {
           totalCounters={this.state.counters.filter(c => c.value > 0).length}
         />
         <main className="container">
-          <Counters
-            counters={this.state.counters}
-            onReset={this.handleReset}
-            onIncrement={this.handleIncrement}
-            onDelete={this.handleDelete}
-          />
+          <ul class="list-group">
+            <Counters
+              counters={this.state.counters}
+              onReset={this.handleReset}
+              onIncrement={this.handleIncrement}
+              onDelete={this.handleDelete}
+            />
+          </ul>
         </main>
       </React.Fragment>
     );

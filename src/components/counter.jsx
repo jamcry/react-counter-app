@@ -4,6 +4,7 @@ class Counter extends Component {
   render() { 
     return ( 
       <div>
+        <span className="font-weight-bold">Counter {this.props.counter.id}</span>
         <span className={this.getBadgeClasses()}>{this.props.counter.value}</span>
         <button
           className="btn btn-secondary btn-sm"
