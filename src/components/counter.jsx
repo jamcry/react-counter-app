@@ -23,7 +23,7 @@ class Counter extends Component {
   
   getBadgeClasses() {
     // Return warning(yellow) badge if value is zero, primary(blue) otherwise
-    return "badge m-2 badge-" + (this.props.value === 0 ? "warning" : "primary");
+    return "badge m-2 badge-" + (this.props.counter.value === 0 ? "warning" : "primary");
   }
 }
  
