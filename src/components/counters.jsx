@@ -11,6 +11,22 @@ class Counters extends Component {
     ]
   };
 
+  handleReset = () => {
+    const counters = this.state.counters.map(counter => {
+      counter.value = 0;
+      return counter;
+    });
+    this.setState({ counters });
+  };
+
+  handleIncrement = (counter) => {
+    const counters = [...this.state.counters]; // Clone the state's counters array
+    const index = counters.indexOf(counter); // Get the index of the clicked counter
+    counters[index] = { ...counter }; // Clone the clicked counter object
+    counters[index].value++;
+    this.setState({ counters });
+  };
+
   handleDelete = (counterId) => {
     // Filter the counters that will not be deleted
     const counters = this.state.counters.filter(counter => (counter.id !== counterId));
@@ -20,10 +36,17 @@ class Counters extends Component {
   render() { 
     return (
       <div>
+        <button
+          className="btn btn-primary btn-sm m-2"
+          onClick={this.handleReset}
+        >
+        Reset
+        </button>
         {this.state.counters.map(counter => (
           <Counter
             counter={counter}
             key={counter.id}
+            onIncrement={this.handleIncrement}
             onDelete={this.handleDelete}
           />
         ))}
